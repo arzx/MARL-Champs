@@ -131,7 +131,7 @@ pbt = PopulationBasedTraining(
     mode="max",
     perturbation_interval=10,
     hyperparam_mutations={
-        "lr": tune.loguniform(1e-5, 1e-2),
+        "lr": tune.loguniform(1e-5, 1e-3),
         "gamma": tune.uniform(0.95, 0.99),
     },
 )
@@ -144,6 +144,7 @@ config = (
         policy_mapping_fn=lambda agent_id, *args, **kwargs: agent_id,
     )
     .callbacks(DashboardCallback)
+    .training(grad_clip=1.0)
 )
 
 tuner = tune.Tuner(

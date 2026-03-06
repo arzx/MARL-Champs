@@ -19,7 +19,12 @@ class CompetitiveTradingEnv(MultiAgentEnv):
             unit_side='right'
         )
         flat_env = gym.wrappers.FlattenObservation(self._base_env)
-        single_obs_space = flat_env.observation_space
+        _s = flat_env.observation_space
+        single_obs_space = gym.spaces.Box(
+            low=_s.low.astype(np.float32),
+            high=_s.high.astype(np.float32),
+            dtype=np.float32,
+        )
         single_act_space = self._base_env.action_space
         self.observation_space = gym.spaces.Dict({
             aid: single_obs_space for aid in self.agent_ids

@@ -1,0 +1,14 @@
+artifact_uri: /Users/arturganzha/MARL-Champs/mlruns/714384024339683852/0c787f0617fb4768af91b6c308dab943/artifacts
+end_time: 1772813530527
+entry_point_name: ''
+experiment_id: '714384024339683852'
+lifecycle_stage: active
+run_id: 0c787f0617fb4768af91b6c308dab943
+run_name: PPO_competitive_trading_57832_00000
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1772812350226
+status: 3
+tags: []
+user_id: unknown
