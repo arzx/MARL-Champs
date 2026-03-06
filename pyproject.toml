@@ -1,0 +1,18 @@
+[project]
+name = "marl-champs"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "gym-anytrading>=2.0.0",
+    "matplotlib>=3.10.8",
+    "mlflow>=3.10.1",
+    "pettingzoo>=1.25.0",
+    "plotly>=6.6.0",
+    "ray[rllib]>=2.54.0",
+    "shap>=0.51.0",
+    "streamlit>=1.55.0",
+    "torch>=2.10.0",
+    "tqdm>=4.67.3",
+]
