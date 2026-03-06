@@ -85,6 +85,27 @@ if histories:
 st.subheader("Agent Strategies — Feature Importance (SHAP on BUY action)")
 st.caption("Which market features most influence each agent's decision to buy")
 
+with st.expander("How to read these charts"):
+    st.markdown("""
+**Features** are the flattened observation window: 10 timesteps × [bid, ask] = 20 values.
+`t-10` = oldest tick in the window · `t-1` = most recent tick.
+
+**Bar length** = mean |SHAP| — how strongly that price tick pushes the agent toward buying.
+A longer bar means the agent relies more heavily on that feature.
+
+| Pattern | What it reveals |
+|---|---|
+| `t-1_*` dominates | **Reactive** — triggers on the latest tick (momentum / breakout) |
+| `t-10_*` / `t-9_*` dominate | **Trend-following** — looks further back in history |
+| `ask` features dominate | Sensitive to the **offer price** (what the agent would pay) |
+| `bid` features dominate | Watches **sell-side pressure** in the market |
+| Spread across many features | Learned a **moving-average–like** pattern |
+| Concentrated on 1–2 features | Found a **simple trigger signal** |
+
+**Divergence across agents** is the goal — in zero-sum competition, copying the same strategy yields 0 reward, so agents are incentivised to discover different niches.
+SHAP updates every 5 training iterations.
+""")
+
 cols = st.columns(len(sorted_agents))
 for i, (agent_id, data) in enumerate(sorted_agents):
     with cols[i]:
